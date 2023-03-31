@@ -37,8 +37,10 @@ void MSYS_CTRL_vGPIOAHBEnable(Dt_PORT_VAL_E copy_GPIOPeripheral)
 }
 */
 
-void MSYS_CTRL_vSystemClkInit(Dt_ClkInitConfig_U Copy_Config)
+void MSYS_CTRL_vSystemClkInit(Dt_SysClckSelectCfg_E Config)
 {
+    Dt_ClkInitConfig_U Copy_Config = { .All = Config };
+
     MRCC->Pin.OSCSRC = Copy_Config.Bits.ClkSlct_OSCSRC;
     MRCC->Pin.BYPASS = Copy_Config.Bits.Pll_EnCtrl_BYPASS;
     MRCC->Pin.SYSDIV = Copy_Config.Bits.Prescaler_SYSDIV;
@@ -46,8 +48,10 @@ void MSYS_CTRL_vSystemClkInit(Dt_ClkInitConfig_U Copy_Config)
     /*PLL Config To be done*/
 }
 
-void MSYS_CTRL_vGPIOClkEnableCtrl(Dt_GPIOClkEnable_U Copy_Config)
-{   /*APB Config to be done*/
+void MSYS_CTRL_vGPIOClkEnableCtrl(Dt_GPIOClckEnableCfg_E Config)
+{   
+    Dt_GPIOClkEnable_U Copy_Config = { .All = Config };
+       /*APB Config to be done*/
     switch(Copy_Config.Bits.PortSlct)
     {
         case PORTA_VAL:

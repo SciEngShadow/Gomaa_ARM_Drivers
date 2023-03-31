@@ -22,7 +22,7 @@ void MRCG_voidOutMCO_1Pre(RCC_MCO1Pre_t Copy_tPreMco_1);
 //void MSYS_CTRL_vClkConfig(Dt_ClkConfig_U copy_Config);
 //void MSYS_CTRL_vGPIOAHBEnable(uint32 ui32GPIOPeripheral);
 
-void MSYS_CTRL_vSystemClkInit(Dt_ClkInitConfig_U Copy_Config);
-void MSYS_CTRL_vGPIOClkEnableCtrl(Dt_GPIOClkEnable_U Copy_Config);
+void MSYS_CTRL_vSystemClkInit(Dt_SysClckSelectCfg_E Config);
+void MSYS_CTRL_vGPIOClkEnableCtrl(Dt_GPIOClckEnableCfg_E Config);
 
 #endif /*_SYS_CTRL_INIT_H*/
