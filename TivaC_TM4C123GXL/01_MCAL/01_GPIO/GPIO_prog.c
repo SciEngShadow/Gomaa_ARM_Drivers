@@ -8,49 +8,6 @@ void MGPIO_vSetPinMode(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
                        Dt_GPIOPinDirectionCfg_E     copy_GPIOPinDirectionCfg )
 {
     MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
-    /*
-    switch(copy_GPIOBusCfg)
-    {
-        case GPIO_AHB:
-        {
-            switch(copy_GPIOPortCfg)
-            {
-                case GPIO_PORTA: MGPIO_AHB_CTRL1_REG_PORTA->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTB: MGPIO_AHB_CTRL1_REG_PORTB->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTC: MGPIO_AHB_CTRL1_REG_PORTC->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTD: MGPIO_AHB_CTRL1_REG_PORTD->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTE: MGPIO_AHB_CTRL1_REG_PORTE->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTF: MGPIO_AHB_CTRL1_REG_PORTF->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                default        : break;
-            }
-            break; 
-            MGPIO_AHB_CTRL1_REG(copy_GPIOPortCfg)->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
-            break;
-        }
-        case GPIO_APB:
-        {
-            
-            switch(copy_GPIOPortCfg)
-            {
-                case GPIO_PORTA: MGPIO_APB_CTRL1_REG_PORTA->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTB: MGPIO_APB_CTRL1_REG_PORTB->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTC: MGPIO_APB_CTRL1_REG_PORTC->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTD: MGPIO_APB_CTRL1_REG_PORTD->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTE: MGPIO_APB_CTRL1_REG_PORTE->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                case GPIO_PORTF: MGPIO_APB_CTRL1_REG_PORTF->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg); break;
-                default        : break;
-            }
-            break; 
-            MGPIO_APB_CTRL1_REG(copy_GPIOPortCfg)->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
-            break;
-        }
-        default:
-        {
-            Do Nothing
-            break;
-        }
-    }
-    */
 }
 
 
