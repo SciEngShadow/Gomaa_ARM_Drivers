@@ -7,22 +7,202 @@ void MGPIO_vSetPinMode(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
                        Dt_GPIOBusCfg_E              copy_GPIOBusCfg          ,\
                        Dt_GPIOPinDirectionCfg_E     copy_GPIOPinDirectionCfg )
 {
-    switch(copy_GPIOPortCfg)
+    switch(copy_GPIOBusCfg)
     {
-        case GPIO_PORTA: {
-                MGPIO_AHB_GPIODIR_REG(GPIO_PORTA,GPIO_PIN0) = copy_GPIOPinDirectionCfg;
+        case GPIO_AHB:{
+            switch(copy_GPIOPortCfg)
+            {
+                case GPIO_PORTA: {
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_AHB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_AHB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_AHB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_AHB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_AHB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_AHB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_AHB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_AHB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTB:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_AHB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_AHB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_AHB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_AHB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_AHB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_AHB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_AHB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_AHB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTC:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_AHB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_AHB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_AHB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_AHB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_AHB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_AHB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_AHB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_AHB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTD:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_AHB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_AHB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_AHB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_AHB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_AHB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_AHB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_AHB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_AHB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTE:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_AHB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_AHB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_AHB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_AHB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_AHB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_AHB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_AHB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_AHB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTF:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_AHB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_AHB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_AHB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_AHB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_AHB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_AHB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_AHB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_AHB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                default:
+                {
+                    break;
+                }
+            }break;
         }
-        case GPIO_PORTB:
-        case GPIO_PORTC:
-        case GPIO_PORTD:
-        case GPIO_PORTE:
-        case GPIO_PORTF:
+        case GPIO_APB:{
+            switch(copy_GPIOPortCfg)
+            {
+                case GPIO_PORTA: {
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_APB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_APB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_APB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_APB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_APB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_APB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_APB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_APB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTB:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_APB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_APB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_APB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_APB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_APB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_APB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_APB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_APB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTC:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_APB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_APB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_APB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_APB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_APB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_APB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_APB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_APB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTD:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_APB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_APB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_APB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_APB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_APB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_APB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_APB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_APB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTE:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_APB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_APB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_APB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_APB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_APB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_APB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_APB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_APB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                case GPIO_PORTF:{
+                    switch(copy_GPIOPinCfg)
+                    {
+                        case GPIO_PIN0: MGPIO_APB_GPIODIR_REG(0,0) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN1: MGPIO_APB_GPIODIR_REG(0,1) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN2: MGPIO_APB_GPIODIR_REG(0,2) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN3: MGPIO_APB_GPIODIR_REG(0,3) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN4: MGPIO_APB_GPIODIR_REG(0,4) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN5: MGPIO_APB_GPIODIR_REG(0,5) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN6: MGPIO_APB_GPIODIR_REG(0,6) = copy_GPIOPinDirectionCfg; break;
+                        case GPIO_PIN7: MGPIO_APB_GPIODIR_REG(0,7) = copy_GPIOPinDirectionCfg; break;
+                        default: break;
+                    } break;
+                }
+                default:
+                {
+                    break;
+                }
+            }break;
+        }
         default:
+        {
+            break;
+        }
     }
-    MGPIO_AHB_GPIODIR_REG(MGPIO_AHB_CTRL1_REG_PORTA,GPIO_PIN0) = copy_GPIOPinDirectionCfg;
 }
 
-
+/*
 void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
                  Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
                  Dt_GPIOPinDirectionCfg_E           copy_GPIOPinDirectionCfg            ,\
@@ -43,6 +223,7 @@ void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg            
         .PinDigitalEn       =   copy_GPIOPinDigitalEnableCfg
     };
 
-
-
 }
+*/
+
+
