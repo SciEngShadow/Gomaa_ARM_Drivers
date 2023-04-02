@@ -98,6 +98,7 @@ void MGPIO_vSetPinMode(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
                 }
                 default:
                 {
+                    /*Do Nothing*/
                     break;
                 }
             }break;
