@@ -7,7 +7,23 @@ void MGPIO_vSetPinMode(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
                        Dt_GPIOBusCfg_E              copy_GPIOBusCfg          ,\
                        Dt_GPIOPinDirectionCfg_E     copy_GPIOPinDirectionCfg )
 {
-    MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
+    switch(copy_GPIOPinDirectionCfg)
+    {
+        case GPIO_PIN_INPUT:
+        {
+            MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All &= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
+            break;
+        }
+        case GPIO_PIN_OUTPUT:
+        {
+            MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
 }
 
 /******************************************************************************************************************/
@@ -17,7 +33,23 @@ void MGPIO_vSetPinOutputType(Dt_GPIOPortNum_E                   copy_GPIOPortCfg
                              Dt_GPIOBusCfg_E                    copy_GPIOBusCfg          ,\
                              Dt_GPIOPinOpenDrainPushPullCfg_E   copy_GPIOPinOpenDrainPushPullCfg)
 {
-    MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All |= (copy_GPIOPinOpenDrainPushPullCfg<<copy_GPIOPinCfg);
+    switch(copy_GPIOPinOpenDrainPushPullCfg)
+    {
+        case GPIO_PIN_PUSHPULL:
+        {
+            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All &= (copy_GPIOPinOpenDrainPushPullCfg<<copy_GPIOPinCfg);
+            break;
+        }
+        case GPIO_PIN_OPENDRAIN:
+        {
+            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All |= (copy_GPIOPinOpenDrainPushPullCfg<<copy_GPIOPinCfg);
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
 }
 
 /******************************************************************************************************************/
@@ -133,9 +165,9 @@ void MGPIO_vSetDigitalPinEnableType(Dt_GPIOPortNum_E             copy_GPIOPortCf
 void MGPIO_vSetPinAltFn(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
                         Dt_GPIOPinNum_E              copy_GPIOPinCfg          ,\
                         Dt_GPIOBusCfg_E              copy_GPIOBusCfg          ,\
-                        Dt_GPIOPinAlternateFunCfg_E  opy_GPIOPinAlternateFunCfg)
+                        Dt_GPIOPinAlternateFunCfg_E  copy_GPIOPinAlternateFunCfg)
 {
-    switch(opy_GPIOPinAlternateFunCfg)
+    switch(copy_GPIOPinAlternateFunCfg)
     {
         case GPIO_PIN_ALF_DIS:
         {
