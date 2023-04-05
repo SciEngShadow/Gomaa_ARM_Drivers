@@ -255,6 +255,39 @@ void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg       
 
  /******************************************************************************************************************/
 
+void MGPIO_vInitOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                        Dt_GPIOPinNum_E                    copy_GPIOPinSCfg                    ,\
+                        Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                        Dt_GPIOPinDirectionCfg_E           copy_GPIOPinDirectionCfg            ,\
+                        Dt_GPIOPinDriveStrenghCfg_E        copy_GPIOPinDriveStrenghCfg         ,\
+                        Dt_GPIOPinPullUpDownCfg_E          copy_GPIOPinPullUpDownCfg           ,\
+                        Dt_GPIOPinOpenDrainPushPullCfg_E   copy_GPIOPinOpenDrainPushPullCfg    ,\
+                        Dt_GPIOPinAlternateFunCfg_E        copy_GPIOPinAlternateFunCfg         ,\
+                        Dt_GPIOPinDigitalEnableCfg_E       copy_GPIOPinDigitalEnableCfg        )
+{
+    uint8 local_counter = 0;
+
+    for(local_counter ; local_counter <= copy_GPIOPinSCfg ; local_counter++)
+    {
+        MGPIO_vSetPinMode               (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinDirectionCfg);
+        MGPIO_vSetPinOutputType         (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinOpenDrainPushPullCfg);
+        MGPIO_vSetPullType              (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinPullUpDownCfg);
+        MGPIO_vSetDriveStrenghType      (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinDriveStrenghCfg);
+        MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
+        MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);
+    }
+}
+
+ /******************************************************************************************************************/
+
+void MGPIO_vPortOutputOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                              Dt_GPIOPinAddCfg_E                 copy_GPIOPinAddCfg                  ,\
+                              Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                              uint32                             copy_GPIOPinOutputStateCfg           )
+{
+    MGPIO_DATA_REG_ONE_BYTE(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddCfg)->All = copy_GPIOPinOutputStateCfg;   
+}
+
 
 void Delay(void){
 	unsigned long j=0;

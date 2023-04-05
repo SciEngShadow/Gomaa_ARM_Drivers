@@ -78,8 +78,23 @@ void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg       
                      // Dt_GPIOPinAddressOffsetCfg_E       copy_GPIOPinAddressOffsetCfg        ,
                       Dt_GPIOPinOutputStateCfg_E         copy_GPIOPinOutputStateCfg           );
 
+void MGPIO_vInitOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                        Dt_GPIOPinNum_E                    copy_GPIOPinSCfg                    ,\
+                        Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                        Dt_GPIOPinDirectionCfg_E           copy_GPIOPinDirectionCfg            ,\
+                        Dt_GPIOPinDriveStrenghCfg_E        copy_GPIOPinDriveStrenghCfg         ,\
+                        Dt_GPIOPinPullUpDownCfg_E          copy_GPIOPinPullUpDownCfg           ,\
+                        Dt_GPIOPinOpenDrainPushPullCfg_E   copy_GPIOPinOpenDrainPushPullCfg    ,\
+                        Dt_GPIOPinAlternateFunCfg_E        copy_GPIOPinAlternateFunCfg         ,\
+                        Dt_GPIOPinDigitalEnableCfg_E       copy_GPIOPinDigitalEnableCfg        );
+                        
+void MGPIO_vPortOutputOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                              Dt_GPIOPinAddCfg_E                 copy_GPIOPinAddCfg                  ,\
+                              Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                              uint32                             copy_GPIOPinOutputStateCfg           );
+
+
 //void MGPIO_vWriteDataDIR();
-//void MGPIO_vPortOutputOneByte();
 //void MGPIO_vPinToggle();
 //uint8 MGPIO_u8ReadData();
 
