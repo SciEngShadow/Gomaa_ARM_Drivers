@@ -229,20 +229,22 @@ void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg            
 void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
                       Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
                       Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
-                      Dt_GPIOPinAddressOffsetCfg_E       copy_GPIOPinAddressOffsetCfg        ,\
+                      //Dt_GPIOPinAddressOffsetCfg_E       copy_GPIOPinAddressOffsetCfg        ,
                       Dt_GPIOPinOutputStateCfg_E         copy_GPIOPinOutputStateCfg           )
 {
     switch(copy_GPIOPinOutputStateCfg)
     {
         case GPIO_PIN_OUTPUT_STATE_LOW:
         {
-             CLR_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddressOffsetCfg)->All , copy_GPIOPinCfg);
-             break;
+            //CLR_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddressOffsetCfg)->All , copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinCfg)->All , copy_GPIOPinCfg);
+            break;
         }
         case GPIO_PIN_OUTPUT_STATE_HIGH:
         {
-             SET_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddressOffsetCfg)->All , copy_GPIOPinCfg);
-             break;
+            //SET_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddressOffsetCfg)->All , copy_GPIOPinCfg);
+            SET_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinCfg)->All , copy_GPIOPinCfg);
+            break;
         }
         default:
         {

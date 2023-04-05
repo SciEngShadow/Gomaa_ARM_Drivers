@@ -67,6 +67,8 @@ typedef enum{
     GPIO_PIN7_ADD_OFFSET    = 0x200U    
 }Dt_GPIOPinAddressOffsetCfg_E;
 */
+
+/*
 typedef enum{
     GPIO_PIN0_ADD_OFFSET    = 0U    ,
     GPIO_PIN1_ADD_OFFSET    = 1U    ,
@@ -77,6 +79,7 @@ typedef enum{
     GPIO_PIN6_ADD_OFFSET    = 6U    ,
     GPIO_PIN7_ADD_OFFSET    = 7U    
 }Dt_GPIOPinAddressOffsetCfg_E;
+*/
 
 /*****************************************************/
 

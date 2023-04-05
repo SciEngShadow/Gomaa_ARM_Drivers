@@ -75,7 +75,7 @@ void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg            
 void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
                       Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
                       Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
-                      Dt_GPIOPinAddressOffsetCfg_E       copy_GPIOPinAddressOffsetCfg        ,\
+                     // Dt_GPIOPinAddressOffsetCfg_E       copy_GPIOPinAddressOffsetCfg        ,
                       Dt_GPIOPinOutputStateCfg_E         copy_GPIOPinOutputStateCfg           );
 
 //void MGPIO_vWriteDataDIR();
