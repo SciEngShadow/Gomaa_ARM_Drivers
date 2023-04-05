@@ -3,6 +3,7 @@
 
 #include "../../00_LIB/00_STD_TYPES/std_types.h"
 #include "GPIO_priv.h"
+#include "../../00_LIB/01_BIT_MATH/bit_math.h"
 
 /*
 void 
@@ -71,4 +72,16 @@ void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg            
                  Dt_GPIOPinDigitalEnableCfg_E       copy_GPIOPinDigitalEnableCfg        );
 
 
+void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                      Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
+                      Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                      Dt_GPIOPinAddressOffsetCfg_E       copy_GPIOPinAddressOffsetCfg        ,\
+                      Dt_GPIOPinOutputStateCfg_E         copy_GPIOPinOutputStateCfg           );
+
+//void MGPIO_vWriteDataDIR();
+//void MGPIO_vPortOutputOneByte();
+//void MGPIO_vPinToggle();
+//uint8 MGPIO_u8ReadData();
+
+void Delay(void);
 #endif /*_GPIO_INT_H_*/

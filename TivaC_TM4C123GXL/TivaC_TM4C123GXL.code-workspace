@@ -6,7 +6,10 @@
 	],
 	"settings": {
 		"files.associations": {
-			"sys_ctrl_priv.h": "c"
+			"sys_ctrl_priv.h": "c",
+			"compare": "c",
+			"limits": "c",
+			"new": "c"
 		}
 	}
 }

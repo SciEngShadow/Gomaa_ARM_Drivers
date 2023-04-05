@@ -11,12 +11,14 @@ void MGPIO_vSetPinMode(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
     {
         case GPIO_PIN_INPUT:
         {
-            MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All &= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All &= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_OUTPUT:
         {
-            MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All,copy_GPIOPinCfg);
+            //MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODIR.All |= (copy_GPIOPinDirectionCfg<<copy_GPIOPinCfg);
             break;
         }
         default:
@@ -37,12 +39,14 @@ void MGPIO_vSetPinOutputType(Dt_GPIOPortNum_E                   copy_GPIOPortCfg
     {
         case GPIO_PIN_PUSHPULL:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All &= (copy_GPIOPinOpenDrainPushPullCfg<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All &= (copy_GPIOPinOpenDrainPushPullCfg<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_OPENDRAIN:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All |= (copy_GPIOPinOpenDrainPushPullCfg<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOODR.All |= (copy_GPIOPinOpenDrainPushPullCfg<<copy_GPIOPinCfg);
             break;
         }
         default:
@@ -63,22 +67,26 @@ void MGPIO_vSetPullType(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
     {
         case GPIO_PIN_PULLUP_EN:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPUR.All |= (1U<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPUR.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPUR.All |= (1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_PULLUP_DIS:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPUR.All &= ~(1U<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPUR.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPUR.All &= ~(1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_PULLDOWN_EN:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPDR.All |= (1U<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPDR.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPDR.All |= (1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_PULLDOWN_DIS:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPDR.All &= ~(1U<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPDR.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOPDR.All &= ~(1U<<copy_GPIOPinCfg);
             break;
         }
         default:
@@ -99,32 +107,38 @@ void MGPIO_vSetDriveStrenghType(Dt_GPIOPortNum_E             copy_GPIOPortCfg   
     {
         case GPIO_PIN_R2RDIS:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR2R.All &= ~(1U<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR2R.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR2R.All &= ~(1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_R2REN:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR2R.All |= (1U<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR2R.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR2R.All |= (1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_R4RDIS:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR4R.All &= ~(1U<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR4R.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR4R.All &= ~(1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_R4REN:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR4R.All |= (1U<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR4R.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR4R.All |= (1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_R8RDIS:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR8R.All &= ~(1U<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR8R.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR8R.All &= ~(1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_R8REN:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR8R.All |= (1U<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR8R.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODR8R.All |= (1U<<copy_GPIOPinCfg);
             break;
         }
         default:
@@ -145,12 +159,14 @@ void MGPIO_vSetDigitalPinEnableType(Dt_GPIOPortNum_E             copy_GPIOPortCf
     {
         case GPIO_PIN_D_DIS:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODEN.All &= ~(1U<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODEN.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODEN.All &= ~(1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_D_EN:
         {
-            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODEN.All |= (1U<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODEN.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIODEN.All |= (1U<<copy_GPIOPinCfg);
             break;
         }
         default:
@@ -171,12 +187,14 @@ void MGPIO_vSetPinAltFn(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
     {
         case GPIO_PIN_ALF_DIS:
         {
-            MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOAFSEL.All &= ~(1U<<copy_GPIOPinCfg);
+            CLR_BIT(MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOAFSEL.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOAFSEL.All &= ~(1U<<copy_GPIOPinCfg);
             break;
         }
         case GPIO_PIN_ALF_EN:
         {
-            MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOAFSEL.All |= (1U<<copy_GPIOPinCfg);
+            SET_BIT(MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOAFSEL.All , copy_GPIOPinCfg);
+            //MGPIO_CTRL1_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOAFSEL.All |= (1U<<copy_GPIOPinCfg);
             break;
         }
         default:
@@ -186,6 +204,7 @@ void MGPIO_vSetPinAltFn(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
     }
 }
 
+ /******************************************************************************************************************/
 
 void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
                  Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
@@ -203,4 +222,39 @@ void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg            
     MGPIO_vSetDriveStrenghType      (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDriveStrenghCfg);
     MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
     MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);
+}
+
+ /******************************************************************************************************************/
+
+void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                      Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
+                      Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                      Dt_GPIOPinAddressOffsetCfg_E       copy_GPIOPinAddressOffsetCfg        ,\
+                      Dt_GPIOPinOutputStateCfg_E         copy_GPIOPinOutputStateCfg           )
+{
+    switch(copy_GPIOPinOutputStateCfg)
+    {
+        case GPIO_PIN_OUTPUT_STATE_LOW:
+        {
+             CLR_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddressOffsetCfg)->All , copy_GPIOPinCfg);
+             break;
+        }
+        case GPIO_PIN_OUTPUT_STATE_HIGH:
+        {
+             SET_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddressOffsetCfg)->All , copy_GPIOPinCfg);
+             break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+}
+
+ /******************************************************************************************************************/
+
+
+void Delay(void){
+	unsigned long j=0;
+	for (j=0; j<DELAY_VALUE ; j++);
 }

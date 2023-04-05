@@ -51,9 +51,20 @@ typedef enum{
 }Dt_GPIOPinAlternateFunCfg_E;
 
 typedef enum{
-    GPIO_PIN_OUTPUT_LOW    = 0U    ,
-    GPIO_PIN_OUTPUT_HIGH   = 1U
-}Dt_GPIOPinOutputCfg_E;
+    GPIO_PIN_OUTPUT_STATE_LOW    = 0U    ,
+    GPIO_PIN_OUTPUT_STATE_HIGH   = 1U
+}Dt_GPIOPinOutputStateCfg_E;
+
+typedef enum{
+    GPIO_PIN0_ADD_OFFSET    = 0x004U    ,
+    GPIO_PIN1_ADD_OFFSET    = 0x008U    ,
+    GPIO_PIN2_ADD_OFFSET    = 0x010U    ,
+    GPIO_PIN3_ADD_OFFSET    = 0x020U    ,
+    GPIO_PIN4_ADD_OFFSET    = 0x040U    ,
+    GPIO_PIN5_ADD_OFFSET    = 0x080U    ,
+    GPIO_PIN6_ADD_OFFSET    = 0x100U    ,
+    GPIO_PIN7_ADD_OFFSET    = 0x200U    
+}Dt_GPIOPinAddressOffsetCfg_E;
 
 /*****************************************************/
 
@@ -93,8 +104,15 @@ typedef union{
 
 /*****************************************************/
 typedef struct {
-    uint32 DATA      :8    ;
-    uint32 RESERVER_2:24   ;
+    uint32 PIN0:1;
+    uint32 PIN1:1;
+    uint32 PIN2:1;
+    uint32 PIN3:1;
+    uint32 PIN4:1;
+    uint32 PIN5:1;
+    uint32 PIN6:1;
+    uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_MGPIO_PORTx_Data_REG_Pins_S;
 
 typedef union {
@@ -113,6 +131,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIODIR_REG_Pins_S;
 
 typedef union {
@@ -131,6 +150,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOIS_REG_Pins_S;
 
 typedef union {
@@ -149,6 +169,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOIBE_REG_Pins_S;
 
 typedef union {
@@ -167,6 +188,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOIEV_REG_Pins_S;
 
 typedef union {
@@ -185,6 +207,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOIM_REG_Pins_S;
 
 typedef union {
@@ -203,6 +226,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIORIS_REG_Pins_S;
 
 typedef union {
@@ -221,6 +245,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOMIS_REG_Pins_S;
 
 typedef union {
@@ -239,6 +264,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOICR_REG_Pins_S;
 
 typedef union {
@@ -257,6 +283,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOAFSEL_REG_Pins_S;
 
 typedef union {
@@ -275,6 +302,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIODR2R_REG_Pins_S;
 
 typedef union {
@@ -293,6 +321,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIODR4R_REG_Pins_S;
 
 typedef union {
@@ -311,6 +340,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIODR8R_REG_Pins_S;
 
 typedef union {
@@ -329,6 +359,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOODR_REG_Pins_S;
 
 typedef union {
@@ -347,6 +378,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPUR_REG_Pins_S;
 
 typedef union {
@@ -365,6 +397,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPDR_REG_Pins_S;
 
 typedef union {
@@ -383,6 +416,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOSLR_REG_Pins_S;
 
 typedef union {
@@ -401,6 +435,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIODEN_REG_Pins_S;
 
 typedef union {
@@ -419,6 +454,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOLOCK_REG_Pins_S;
 
 typedef union {
@@ -437,6 +473,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOCR_REG_Pins_S;
 
 typedef union {
@@ -455,6 +492,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOAMSEL_REG_Pins_S;
 
 typedef union {
@@ -473,6 +511,7 @@ typedef struct {
     uint32 PMC5:4;
     uint32 PMC6:4;
     uint32 PMC7:4;
+    uint32 RESERVER:24;
 }Dt_GPIOPCTL_REG_Pins_S;
 
 typedef union {
@@ -491,6 +530,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOADCCTL_REG_Pins_S;
 
 typedef union {
@@ -509,6 +549,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIODMACTL_REG_Pins_S;
 
 typedef union {
@@ -527,6 +568,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID4_REG_Pins_S;
 
 typedef union {
@@ -545,6 +587,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID5_REG_Pins_S;
 
 typedef union {
@@ -563,6 +606,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID6_REG_Pins_S;
 
 typedef union {
@@ -581,6 +625,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID7_REG_Pins_S;
 
 typedef union {
@@ -599,6 +644,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID0_REG_Pins_S;
 
 typedef union {
@@ -617,6 +663,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID1_REG_Pins_S;
 
 typedef union {
@@ -635,6 +682,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID2_REG_Pins_S;
 
 typedef union {
@@ -653,6 +701,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPeriphID3_REG_Pins_S;
 
 typedef union {
@@ -671,6 +720,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPCellID0_REG_Pins_S;
 
 typedef union {
@@ -689,6 +739,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPCellID1_REG_Pins_S;
 
 typedef union {
@@ -707,6 +758,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPCellID2_REG_Pins_S;
 
 typedef union {
@@ -725,6 +777,7 @@ typedef struct {
     uint32 PIN5:1;
     uint32 PIN6:1;
     uint32 PIN7:1;
+    uint32 RESERVER:24;
 }Dt_GPIOPCellID3_REG_Pins_S;
 
 typedef union {
@@ -777,14 +830,16 @@ typedef struct {
     Dt_GPIOPCellID3_REG_U 	GPIOPCellID3  ; //FFC
 }Dt_MGPIO_PORTx_CTRL3_MemMap_S;
 
-#define GPIO_PORTx_BUSx_BASE_ADDRESS                       0x40005000U
-#define GPIO_PORTx_BUSx_PORT_DIFFERENCE                    0x1000U
-#define GPIO_PORTx_BUSx_BUS_DIFFERENCE                     0x53000U
+#define GPIO_PORTx_BUSx_BASE_ADDRESS                       0x40004000U
+#define GPIO_PORTx_BUSx_PORT_DIFFERENCE                    0x00001000U
+#define GPIO_PORTx_BUSx_BUS_DIFFERENCE                     0x00054000U
 
-#define GPIO_PORTx_CTRL1_BASE_ADDRESS_OFFSET              0x400U
-#define GPIO_PORTx_CTRL2_BASE_ADDRESS_OFFSET              0x500U
-#define GPIO_PORTx_IDENTIFICATION_BASE_ADDRESS_OFFSET     0xFD0U
+#define GPIO_PORTx_DATA_BASE_ADDRESS_OFFSET                0x00000000U
+#define GPIO_PORTx_CTRL1_BASE_ADDRESS_OFFSET               0x00000400U
+#define GPIO_PORTx_CTRL2_BASE_ADDRESS_OFFSET               0x00000500U
+#define GPIO_PORTx_IDENTIFICATION_BASE_ADDRESS_OFFSET      0x00000FD0U
 
+#define MGPIO_DATA_REG(BUS_NUM,PORT_NUM,PIN_ADD_OFFSET)  ( ( volatile Dt_MGPIO_PORTx_Data_REG_U*     ) ( GPIO_PORTx_BUSx_BASE_ADDRESS + GPIO_PORTx_DATA_BASE_ADDRESS_OFFSET  + PIN_ADD_OFFSET + (PORT_NUM * GPIO_PORTx_BUSx_PORT_DIFFERENCE) + (BUS_NUM * GPIO_PORTx_BUSx_BUS_DIFFERENCE) ) )
 #define MGPIO_CTRL1_REG(BUS_NUM,PORT_NUM) ( ( volatile Dt_MGPIO_PORTx_CTRL1_MemMap_S* )  ( GPIO_PORTx_BUSx_BASE_ADDRESS + GPIO_PORTx_CTRL1_BASE_ADDRESS_OFFSET + (PORT_NUM * GPIO_PORTx_BUSx_PORT_DIFFERENCE) + (BUS_NUM * GPIO_PORTx_BUSx_BUS_DIFFERENCE) ) )
 #define MGPIO_CTRL2_REG(BUS_NUM,PORT_NUM) ( ( volatile Dt_MGPIO_PORTx_CTRL2_MemMap_S* )  ( GPIO_PORTx_BUSx_BASE_ADDRESS + GPIO_PORTx_CTRL2_BASE_ADDRESS_OFFSET + (PORT_NUM * GPIO_PORTx_BUSx_PORT_DIFFERENCE) + (BUS_NUM * GPIO_PORTx_BUSx_BUS_DIFFERENCE) ) )
 #define MGPIO_CTRL3_REG(BUS_NUM,PORT_NUM) ( ( volatile Dt_MGPIO_PORTx_CTRL3_MemMap_S* )  ( GPIO_PORTx_BUSx_BASE_ADDRESS + GPIO_PORTx_IDENTIFICATION_BASE_ADDRESS_OFFSET + (PORT_NUM * GPIO_PORTx_BUSx_PORT_DIFFERENCE) + (BUS_NUM * GPIO_PORTx_BUSx_BUS_DIFFERENCE) ) )
