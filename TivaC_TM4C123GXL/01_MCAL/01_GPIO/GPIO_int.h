@@ -64,6 +64,7 @@ void MGPIO_vSetPinAltFn(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
 void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
                  Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
                  Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                 Dt_GPIOPinLockCfg_E                copy_GPIOPinLockCfg                 ,\
                  Dt_GPIOPinDirectionCfg_E           copy_GPIOPinDirectionCfg            ,\
                  Dt_GPIOPinDriveStrenghCfg_E        copy_GPIOPinDriveStrenghCfg         ,\
                  Dt_GPIOPinPullUpDownCfg_E          copy_GPIOPinPullUpDownCfg           ,\
@@ -79,8 +80,9 @@ void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg       
                       Dt_GPIOPinOutputStateCfg_E         copy_GPIOPinOutputStateCfg           );
 
 void MGPIO_vInitOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
-                        Dt_GPIOPinNum_E                    copy_GPIOPinSCfg                    ,\
+                        Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
                         Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                        Dt_GPIOPinLockCfg_E                copy_GPIOPinLockCfg                 ,\
                         Dt_GPIOPinDirectionCfg_E           copy_GPIOPinDirectionCfg            ,\
                         Dt_GPIOPinDriveStrenghCfg_E        copy_GPIOPinDriveStrenghCfg         ,\
                         Dt_GPIOPinPullUpDownCfg_E          copy_GPIOPinPullUpDownCfg           ,\
@@ -93,10 +95,25 @@ void MGPIO_vPortOutputOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCf
                               Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
                               uint32                             copy_GPIOPinOutputStateCfg           );
 
+void MGPIO_enumReadData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                        Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
+                        Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                        uint8*                             copy_GPIOPinOutputRead               );
 
-//void MGPIO_vWriteDataDIR();
-//void MGPIO_vPinToggle();
-//uint8 MGPIO_u8ReadData();
+void MGPIO_enumReadDataOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                                Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
+                                Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                                uint8*                             copy_GPIOPinOutputRead               );
+
+void MGPIO_vPinLock(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
+                    Dt_GPIOPinNum_E              copy_GPIOPinCfg          ,\
+                    Dt_GPIOBusCfg_E              copy_GPIOBusCfg          ,\
+                    Dt_GPIOPinLockCfg_E          copy_GPIOPinLockCfg      );
+
+void MGPIO_vPinToggle(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
+                      Dt_GPIOPinNum_E              copy_GPIOPinCfg          ,\
+                      Dt_GPIOBusCfg_E              copy_GPIOBusCfg          );
+
 
 void Delay(void);
 #endif /*_GPIO_INT_H_*/

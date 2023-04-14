@@ -57,8 +57,20 @@ typedef enum{
 
 typedef enum{
     GPIO_PIN_OUTPUT_STATE_LOW             = 0U    ,
-    GPIO_PIN_OUTPUT_STATE_HIGH            = 1U    , 
+    GPIO_PIN_OUTPUT_STATE_HIGH            = 1U     
 }Dt_GPIOPinOutputStateCfg_E;
+
+typedef enum{
+    GPIO_PIN_LOCK_DIS   = 0U   ,
+    GPIO_PIN_LOCK_EN    = 1U
+}Dt_GPIOPinLockCfg_E;
+
+/*
+typedef enum{
+    GPIO_PIN_OUTPUT_READ_LOW             = 0U    ,
+    GPIO_PIN_OUTPUT_READ_HIGH            = 1U     
+}Dt_GPIOPinOutputReadCfg_E;
+*/
 
 /*
 typedef enum{
@@ -849,6 +861,9 @@ typedef struct {
     Dt_GPIOPCellID2_REG_U 	GPIOPCellID2  ; //FF8
     Dt_GPIOPCellID3_REG_U 	GPIOPCellID3  ; //FFC
 }Dt_MGPIO_PORTx_CTRL3_MemMap_S;
+
+#define PIN_LOCK_PASSWORD_TRUE                             0x4C4F434BU
+#define PIN_LOCK_PASSWORD_FALSE                            0x00000000U
 
 #define GPIO_PORTx_BUSx_BASE_ADDRESS                       0x40004000U
 #define GPIO_PORTx_BUSx_PORT_DIFFERENCE                    0x00001000U

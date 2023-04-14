@@ -209,6 +209,7 @@ void MGPIO_vSetPinAltFn(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
 void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
                  Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
                  Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                 Dt_GPIOPinLockCfg_E                copy_GPIOPinLockCfg                 ,\
                  Dt_GPIOPinDirectionCfg_E           copy_GPIOPinDirectionCfg            ,\
                  Dt_GPIOPinDriveStrenghCfg_E        copy_GPIOPinDriveStrenghCfg         ,\
                  Dt_GPIOPinPullUpDownCfg_E          copy_GPIOPinPullUpDownCfg           ,\
@@ -216,12 +217,41 @@ void MGPIO_vInit(Dt_GPIOPortNum_E                   copy_GPIOPortCfg            
                  Dt_GPIOPinAlternateFunCfg_E        copy_GPIOPinAlternateFunCfg         ,\
                  Dt_GPIOPinDigitalEnableCfg_E       copy_GPIOPinDigitalEnableCfg        )
 {
+    switch(copy_GPIOPinDirectionCfg)
+    {
+        case GPIO_PIN_INPUT:
+        {
+            MGPIO_vPinLock                  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinLockCfg);
+            MGPIO_vSetPinMode               (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDirectionCfg);
+            MGPIO_vSetPinOutputType         (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinOpenDrainPushPullCfg);
+            MGPIO_vSetPullType              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinPullUpDownCfg);
+            MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
+            MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);
+        }
+
+        case GPIO_PIN_OUTPUT:
+        {
+            MGPIO_vPinLock                  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinLockCfg);
+            MGPIO_vSetPinMode               (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDirectionCfg);
+            MGPIO_vSetPinOutputType         (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinOpenDrainPushPullCfg);
+            MGPIO_vSetDriveStrenghType      (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDriveStrenghCfg);
+            MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
+            MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);    
+        }
+
+        default:
+        {
+            break;
+        }
+    }
+    /*
     MGPIO_vSetPinMode               (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDirectionCfg);
     MGPIO_vSetPinOutputType         (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinOpenDrainPushPullCfg);
     MGPIO_vSetPullType              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinPullUpDownCfg);
     MGPIO_vSetDriveStrenghType      (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDriveStrenghCfg);
     MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
     MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);
+    */
 }
 
  /******************************************************************************************************************/
@@ -256,8 +286,9 @@ void MGPIO_vWriteData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg       
  /******************************************************************************************************************/
 
 void MGPIO_vInitOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
-                        Dt_GPIOPinNum_E                    copy_GPIOPinSCfg                    ,\
+                        Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
                         Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                        Dt_GPIOPinLockCfg_E                copy_GPIOPinLockCfg                 ,\
                         Dt_GPIOPinDirectionCfg_E           copy_GPIOPinDirectionCfg            ,\
                         Dt_GPIOPinDriveStrenghCfg_E        copy_GPIOPinDriveStrenghCfg         ,\
                         Dt_GPIOPinPullUpDownCfg_E          copy_GPIOPinPullUpDownCfg           ,\
@@ -267,14 +298,43 @@ void MGPIO_vInitOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg     
 {
     uint8 local_counter = 0;
 
-    for(local_counter ; local_counter <= copy_GPIOPinSCfg ; local_counter++)
+    for(local_counter ; local_counter <= copy_GPIOPinCfg ; local_counter++)
     {
+        switch(copy_GPIOPinDirectionCfg)
+        {
+            case GPIO_PIN_INPUT:
+            {
+                MGPIO_vPinLock                  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinLockCfg);
+                MGPIO_vSetPinMode               (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDirectionCfg);
+                MGPIO_vSetPinOutputType         (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinOpenDrainPushPullCfg);
+                MGPIO_vSetPullType              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinPullUpDownCfg);
+                MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
+                MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);
+            }
+
+            case GPIO_PIN_OUTPUT:
+            {
+                MGPIO_vPinLock                  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinLockCfg);
+                MGPIO_vSetPinMode               (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDirectionCfg);
+                MGPIO_vSetPinOutputType         (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinOpenDrainPushPullCfg);
+                MGPIO_vSetDriveStrenghType      (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDriveStrenghCfg);
+                MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
+                MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , copy_GPIOPinCfg , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);    
+            }
+
+            default:
+            {
+                break;
+            }
+        }
+        /*
         MGPIO_vSetPinMode               (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinDirectionCfg);
         MGPIO_vSetPinOutputType         (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinOpenDrainPushPullCfg);
         MGPIO_vSetPullType              (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinPullUpDownCfg);
         MGPIO_vSetDriveStrenghType      (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinDriveStrenghCfg);
         MGPIO_vSetDigitalPinEnableType  (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinDigitalEnableCfg);
         MGPIO_vSetPinAltFn              (copy_GPIOPortCfg , local_counter , copy_GPIOBusCfg , copy_GPIOPinAlternateFunCfg);
+        */
     }
 }
 
@@ -288,6 +348,62 @@ void MGPIO_vPortOutputOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCf
     MGPIO_DATA_REG_ONE_BYTE(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinAddCfg)->All = copy_GPIOPinOutputStateCfg;   
 }
 
+/******************************************************************************************************************/
+
+void MGPIO_enumReadData(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                        Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
+                        Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                        uint8*                             copy_GPIOPinOutputRead               )
+{
+    *copy_GPIOPinOutputRead = GET_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinCfg)->All , copy_GPIOPinCfg);
+}
+
+/******************************************************************************************************************/
+
+void MGPIO_enumReadDataOneByte(Dt_GPIOPortNum_E                   copy_GPIOPortCfg                    ,\
+                                Dt_GPIOPinNum_E                    copy_GPIOPinCfg                     ,\
+                                Dt_GPIOBusCfg_E                    copy_GPIOBusCfg                     ,\
+                                uint8*                             copy_GPIOPinOutputRead               )
+{
+    *copy_GPIOPinOutputRead = MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinCfg)->All;
+}
+
+/******************************************************************************************************************/
+
+void MGPIO_vPinLock(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
+                    Dt_GPIOPinNum_E              copy_GPIOPinCfg          ,\
+                    Dt_GPIOBusCfg_E              copy_GPIOBusCfg          ,\
+                    Dt_GPIOPinLockCfg_E          copy_GPIOPinLockCfg      )
+{
+    switch(copy_GPIOPinLockCfg)
+    {
+        case GPIO_PIN_LOCK_DIS:
+        {
+            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOLOCK.All = PIN_LOCK_PASSWORD_FALSE;
+            break;
+        }
+
+        case GPIO_PIN_LOCK_EN:
+        {
+            MGPIO_CTRL2_REG(copy_GPIOBusCfg,copy_GPIOPortCfg)->GPIOLOCK.All = PIN_LOCK_PASSWORD_TRUE;
+            break;
+        }
+
+        default:
+        {
+            break;
+        }
+    }
+}
+
+/******************************************************************************************************************/
+
+void MGPIO_vPinToggle(Dt_GPIOPortNum_E             copy_GPIOPortCfg         ,\
+                      Dt_GPIOPinNum_E              copy_GPIOPinCfg          ,\
+                      Dt_GPIOBusCfg_E              copy_GPIOBusCfg          )
+{
+    TOG_BIT(MGPIO_DATA_REG(copy_GPIOBusCfg,copy_GPIOPortCfg,copy_GPIOPinCfg)->All , copy_GPIOPinCfg);
+}
 
 void Delay(void){
 	unsigned long j=0;
